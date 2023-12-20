@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Support Automation</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='assets/css/styles.css') }}">
+</head>
+<body>
+    <h1>Support Tasks</h1>
+    <div id="task-buttons">
+        <!-- Buttons will be dynamically added here -->
+    </div>
+
+    <!-- Task Input Modal -->
+    <div id="taskModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="taskTitle">Task Inputs</h2>
+            <form id="taskForm">
+                <!-- Dynamic input fields will be added here -->
+                <input type="file" id="fileInput" name="file" style="display:none;">
+                <button type="submit">Run Task</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="errorModal" class="modal" style="display: none;">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p id="errorMessage"></p>
+        </div>
+    </div>
+
+    <div id="successModal" class="modal" style="display: none;">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p id="successMessage"></p>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        var tasks = {{ tasks | tojson | safe }};
+        var taskConfigs = {{ task_configs | tojson | safe }};
+        var taskDescriptions = {{ task_descriptions | tojson | safe }};
+    </script>
+
+    <script src="{{ url_for('static', filename='assets/js/script.js') }}"></script>
+</body>
+</html>
